@@ -1,0 +1,22 @@
+title: CMD or PowerShell Spawned by Office
+id: 10003
+description: Office applications launching shells is suspicious
+author: hello
+logsource:
+  category: process_creation
+detection:
+  parent_selection:
+    ParentImage|endswith:
+      - winword.exe
+      - excel.exe
+      - powerpnt.exe
+  child_selection:
+    Image|endswith:
+      - cmd.exe
+      - powershell.exe
+  condition: parent_selection and child_selection
+level: high
+tags:
+  - attack.execution
+  - attack.t1203
+  - attack.t1059

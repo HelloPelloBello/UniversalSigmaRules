@@ -1,0 +1,17 @@
+title: Ransomware File Extensions Detected
+id: 10007
+description: Detects creation of files with known ransomware extensions
+author: hello
+logsource:
+  category: file_event
+detection:
+  selection:
+    TargetFilename|endswith:
+      - ".lock"
+      - ".encrypted"
+      - ".pay"
+  condition: selection
+level: critical
+tags:
+  - attack.impact
+  - attack.t1486

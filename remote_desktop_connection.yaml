@@ -1,0 +1,16 @@
+title: Remote Desktop Logon Detected
+id: 10005
+description: Detects RDP logins (LogonType 10)
+author: hello
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4624
+    LogonType: 10
+  condition: selection
+level: info
+tags:
+  - attack.lateral_movement
+  - attack.t1021.001

@@ -1,0 +1,14 @@
+title: Possible DNS Tunneling
+id: 10009
+description: Detects base64-like patterns in DNS queries (data exfiltration)
+author: hello
+logsource:
+  category: dns_query
+detection:
+  selection:
+    QueryName|re: '([A-Za-z0-9+/=]{30,})'
+  condition: selection
+level: high
+tags:
+  - attack.exfiltration
+  - attack.t1071.004

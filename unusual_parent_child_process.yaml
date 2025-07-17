@@ -1,0 +1,15 @@
+title: Unusual Parent-Child Process
+id: 10004
+description: Detects processes with uncommon parent-child combinations
+author: hello
+logsource:
+  category: process_creation
+detection:
+  selection:
+    ParentImage|endswith: winword.exe
+    Image|endswith: cmd.exe
+  condition: selection
+level: medium
+tags:
+  - attack.execution
+  - attack.t1059
